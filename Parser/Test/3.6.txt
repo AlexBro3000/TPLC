@@ -1,0 +1,8 @@
+package main
+func plus(a, b int) ints {
+    return a + b
+}
+func plus(a, a int) int {
+    return a + b
+}
+

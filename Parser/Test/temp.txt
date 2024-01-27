@@ -1,0 +1,14 @@
+package main
+
+func plus(a, b int) int {
+    return a + b
+}
+
+func main() {
+    // error := "ERROR"
+    a := 100
+    b := 200
+
+    c := plus(a, b, error)
+    return
+}

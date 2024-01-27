@@ -1,0 +1,3 @@
+package main
+
+const a int = 1 + 2 + 3

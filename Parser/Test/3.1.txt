@@ -1,0 +1,8 @@
+package main
+func main() {
+    const a int = 0; a := 10
+    const a = "Hello"
+
+    var b int = 0; b := 10
+    var b = "Hello"
+}

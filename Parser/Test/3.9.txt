@@ -1,0 +1,9 @@
+package main
+func main() {
+    for i <= 0; i <= 0; i++ {
+        Print(i)
+    }
+    for i := 0; i <= 0; i <= 0 {
+        Print(i)
+    }
+}

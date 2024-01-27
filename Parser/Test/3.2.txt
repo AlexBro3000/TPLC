@@ -1,0 +1,5 @@
+package main
+func main(a, b int) {
+    const a int = 0;
+    var b int = 0;
+}

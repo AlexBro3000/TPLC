@@ -1,0 +1,7 @@
+package main
+func main() {
+    switch i {
+    case 1: break
+    default: break
+    }
+}

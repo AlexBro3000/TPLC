@@ -1,0 +1,4 @@
+package main
+var a int = 0 + "str"
+var a int = 0.0
+
