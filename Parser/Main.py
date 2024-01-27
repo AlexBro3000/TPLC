@@ -16,15 +16,16 @@ try:
     lexer = Lexer()
     print("- Лексический анализ: запущен")
     result_lexer = lexer.tokenization(txt)
+    print("- Лексический анализ: завершон")
+    # print("Результат:")
+    # print(" ", result_lexer, "\n")
 except Exception as exp:
     print("- Лексический анализ: прерван")
     print("- * ERROR:", exp)
     lexer = None
     result_lexer = None
 else:
-    print("- Лексический анализ: завершон")
-    # print("Результат:")
-    # print(" ", result_lexer, "\n")
+    pass
 finally:
     print()
     print()
@@ -42,15 +43,16 @@ try:
         parser = Parser(lexer)
         print("- Cинтаксический анализ: запущен")
         result_parser = parser.parsing()
+        print("- Cинтаксический анализ: завершон")
+        # print("Результат:")
+        # print(result_parser.syntax_tree("  "), "\n")
 except Exception as exp:
     print("- Cинтаксический анализ: прерван")
     print("- * ERROR:", exp)
     parser = None
     result_parser = None
 else:
-    print("- Cинтаксический анализ: завершон")
-    # print("Результат:")
-    # print(result_parser.syntax_tree("  "), "\n")
+    pass
 finally:
     print()
     print()
@@ -68,18 +70,19 @@ try:
         semantic = Semantic(result_parser)
         print("- Cемантический анализ: запущен")
         result_semantic = semantic.semantic
+        print("- Cемантический анализ: завершон")
+        print("Результат:")
+        for semantic in result_semantic:
+            print(
+                f"  {semantic['type']}::{semantic['message']}\n  ::{semantic['identifier']}"
+            )
 except Exception as exp:
     print("- Cемантический анализ: прерван")
     print("- * ERROR:", exp)
     semantic = None
     result_semantic = None
 else:
-    print("- Cемантический анализ: завершон")
-    print("Результат:")
-    for semantic in result_semantic:
-        print(
-            f"  {semantic['type']}::{semantic['message']}\n  ::{semantic['identifier']}"
-        )
+    pass
 finally:
     print()
     print()
@@ -90,18 +93,22 @@ print("Генератор кода:")
 generator = None
 result_generator = None
 try:
-    print("- Инициализация генератора")
-    generator = Generator(result_parser)
-    print("- Генерация кода: запущен")
-    result_generator = generator.generate()
+    if parser is None and result_parser is None:
+        print("- Генерация кода: прерван")
+    else:
+        print("- Инициализация генератора")
+        generator = Generator(result_parser)
+        print("- Генерация кода: запущен")
+        result_generator = generator.generate()
+        print("- Генерация кода: завершон")
+        print("Результат:")
+        print("\n".join("  " + line for line in result_generator.splitlines()))
 except Exception as exp:
     print("- Генерация кода: прерван")
     print("- * ERROR:", exp)
     generator = None
     result_generator = None
 else:
-    print("- Генерация кода: завершон")
-    print("Результат:")
-    print("\n".join("  " + line for line in result_generator.splitlines()))
+    pass
 finally:
     pass
